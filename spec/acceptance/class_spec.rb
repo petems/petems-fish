@@ -13,6 +13,22 @@ describe 'fish class' do
       apply_manifest(pp, :catch_changes  => true)
     end
 
+    it 'will allow setting shell for users after installation' do
+      pp = <<-EOS
+      include fish
+
+      user {'nemo':
+        ensure  => 'present',
+        shell   => '/usr/bin/fish',
+        require => Class['::fish'],
+      }
+      EOS
+
+      # Run it twice and test for idempotency
+      apply_manifest(pp, :catch_failures => true)
+      apply_manifest(pp, :catch_changes  => true)
+    end
+
     describe package('fish') do
       it { is_expected.to be_installed }
     end
