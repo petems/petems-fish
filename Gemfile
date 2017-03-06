@@ -3,7 +3,7 @@ source ENV['GEM_SOURCE'] || "https://rubygems.org"
 group :test do
   gem 'rake', '< 11'
   gem "puppet", ENV['PUPPET_GEM_VERSION'] || '~> 3.8.0'
-  gem "rspec", '< 3.2.0'
+  gem 'rspec-core', '>= 3.4'
   gem "rspec-puppet", :git => 'https://github.com/rodjek/rspec-puppet.git'
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
@@ -24,6 +24,7 @@ group :test do
   gem 'puppet-lint-resource_reference_syntax'
 
   gem 'parallel_tests'
+  gem 'nokogiri', '1.5.11'
 end
 
 group :development do
