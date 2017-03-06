@@ -8,7 +8,10 @@ group :test do
   gem "puppetlabs_spec_helper"
   gem "metadata-json-lint"
   gem "rspec-puppet-facts"
-  gem 'rubocop', '0.33.0'
+  gem 'rubocop', '0.42.0'
+  gem 'rubocop-rspec', '~> 1.6' if RUBY_VERSION >= '2.3.0'
+  gem 'json_pure', '<= 2.0.1' if RUBY_VERSION < '2.0.0'
+  gem 'safe_yaml', '~> 1.0.4'
   gem 'simplecov', '>= 0.11.0'
   gem 'simplecov-console'
 
@@ -22,8 +25,6 @@ group :test do
 end
 
 group :development do
-  gem "travis"
-  gem "travis-lint"
   gem "puppet-blacksmith"
 end
 
