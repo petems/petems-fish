@@ -34,9 +34,8 @@ class fish (
   validate_string($package_name)
   validate_string($package_version)
 
-  class { '::fish::repo': } ->
-  class { '::fish::install': } ->
-  Class['::fish']
+  contain ::fish::repo
+  contain ::fish::install
 
   # Update packages on repo refresh
   Class['::fish::repo'] ~>

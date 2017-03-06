@@ -14,7 +14,7 @@ describe 'fish' do
           it { is_expected.to create_class('fish') }
 
           it { is_expected.to contain_class('fish::params') }
-          it { is_expected.to contain_class('fish::repo').that_comes_before('Class[fish::install]') }
+          it { is_expected.to contain_class('fish::repo').that_notifies('Class[fish::install]') }
           it { is_expected.to contain_class('fish::install') }
 
           it { is_expected.to contain_package('fish').with_ensure('installed') }
