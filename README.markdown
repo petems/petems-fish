@@ -63,6 +63,22 @@ For more detailed information about parameters, you can read the [docs](https://
 
 ## Limitations
 
+### Setting the root users shell
+
+On Debian family systems, you can get dependancy loops when trying to order to set the root shell:
+
+```
+Error: Failed to apply catalog: Found 1 dependency cycle:
+(Exec[fish-add-apt-repository-ppa:fish-shell/release-2] => Class[Fish::Repo::Ubuntu] => Class[Fish::Repo] => Class[Fish::Repo] => Class[Fish::Install] => Package[fish] => Class[Fish::Install] => Class[Fish] => Class[Fish] => User[root] => Exec[fish-add-apt-repository-ppa:fish-shell/release-2])
+Try the '--graph' option and opening the resulting '.dot' file in OmniGraffle or GraphViz
+```
+
+This is because there is an auto-requirement for the files created or executables run on the root user existing. So the root user must exist so the apt source file can be created, but the root user also needs to wait for the package to be installed.
+
+This only affects the `apt` repos, as `yumrepos` use a custom `inifile` type, so the file doesn't need to exist for it to edit it.
+
+There's unfortunatly no easy solution, the only way would be to have a custom fact that determines if the `/usr/bin/fish` path exists on the system _or_ a fact that determines the package is already installed.
+
 * Arch support is currently not implemented.
 
 ## Development
