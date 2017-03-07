@@ -46,6 +46,9 @@ Lint/AssignmentInCondition:
 Style/SpaceBeforeComment:
   Enabled: true
 
+Security/Eval:
+  Enabled: true
+
 # DISABLED - not useful
 Style/HashSyntax:
   Enabled: false
@@ -69,10 +72,6 @@ Style/WhileUntilModifier:
 
 # DISABLED - the offender is just haskell envy
 Lint/AmbiguousRegexpLiteral:
-  Enabled: false
-
-# DISABLED
-Lint/Eval:
   Enabled: false
 
 # DISABLED
@@ -265,9 +264,6 @@ Style/Documentation:
 Style/DefWithParentheses:
   Enabled: false
 
-Style/DeprecatedHashMethods:
-  Enabled: false
-
 Style/DotPosition:
   Enabled: false
 
@@ -305,7 +301,7 @@ Style/EmptyLiteral:
 Metrics/LineLength:
   Enabled: false
 
-Style/MethodCallParentheses:
+Style/MethodCallWithoutArgsParentheses:
   Enabled: false
 
 Style/MethodDefParentheses:
@@ -317,7 +313,10 @@ Style/LineEndConcatenation:
 Style/StringLiterals:
   Enabled: false
 
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
   Enabled: false
 
 Style/GlobalVars:
@@ -458,7 +457,7 @@ Metrics/ParameterLists:
 Lint/RequireParentheses:
   Enabled: false
 
-Lint/SpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
 Style/ModuleFunction:
