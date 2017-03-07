@@ -1,5 +1,5 @@
 # fish Puppet Module
-[![Build Status](https://secure.travis-ci.org/petems/petems-fish.svg)](https://travis-ci.org/petems/petems-fish)
+[![Build Status](https://travis-ci.org/petems/petems-fish.svg?branch=master)](https://travis-ci.org/petems/petems-fish)
 
 #### Table of Contents
 
