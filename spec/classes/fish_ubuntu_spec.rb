@@ -17,14 +17,26 @@ describe 'fish' do
     context 'repo disabled' do
       let(:params) {{ 'manage_repo' => false }}
       it { is_expected.not_to contain_class('fish::repo::ubuntu')}
-      it { is_expected.not_to contain_apt__ppa('ppa:fish-shell/release-2')}
-      it { is_expected.not_to contain_exec('fish-add-apt-repository-ppa:fish-shell/release-2')}
+      it { is_expected.not_to contain_apt__source('fish-shell-release-2')}
     end
 
     context 'repo enabled' do
       let(:params) {{ 'manage_repo' => true }}
+
       it { is_expected.to contain_class('fish::repo::ubuntu')}
-      it { is_expected.to contain_apt__ppa('ppa:fish-shell/release-2')}
+
+      it {
+        is_expected.to contain_apt__source('fish-shell-release-2').with(
+          :ensure    => 'present',
+          :location  => 'http://ppa.launchpad.net/fish-shell/release-2/ubuntu',
+          :release   => 'xenial',
+          :repos     => 'main',
+          :key      => {
+            "id"=>"59FDA1CE1B84B3FAD89366C027557F056DC33CA5",
+            "server"=>"keyserver.ubuntu.com"
+          }
+        )
+      }
     end
   end
 end
