@@ -12,15 +12,15 @@ describe 'fish' do
 
     context 'repo disabled' do
       let(:params) {{ 'manage_repo' => false }}
-      it { should_not contain_yumrepo('shells_fish_release_2') }
+      it { is_expected.not_to contain_yumrepo('shells_fish_release_2') }
     end
 
     context 'repo enabled' do
       let(:params) {{ 'manage_repo' => true }}
-      it { should contain_class('fish::Repo::Centos')}
+      it { is_expected.to contain_class('fish::Repo::Centos')}
 
       it do
-        should contain_yumrepo('shells_fish_release_2').with(
+        is_expected.to contain_yumrepo('shells_fish_release_2').with(
           :descr    => 'Fish shell - 2.x release series (CentOS_7)',
           :baseurl  => 'http://download.opensuse.org/repositories/shells:/fish:/release:/2/CentOS_7/',
           :enabled  => '1',

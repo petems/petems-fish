@@ -10,7 +10,7 @@ describe 'fish' do
       }
       end
 
-      it { expect { should create_class('fish') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
+      it { expect { is_expected.to create_class('fish') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
     end
   end
 end
