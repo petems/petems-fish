@@ -22,10 +22,10 @@ describe 'fish' do
       it do
         is_expected.to contain_yumrepo('shells_fish_release_2').with(
           :descr    => 'Fish shell - 2.x release series (CentOS_7)',
-          :baseurl  => 'http://download.opensuse.org/repositories/shells:/fish:/release:/2/CentOS_7/',
+          :baseurl  => 'https://download.opensuse.org/repositories/shells:/fish:/release:/2/CentOS_7/',
           :enabled  => '1',
           :gpgcheck => '1',
-          :gpgkey   => "http://download.opensuse.org/repositories/shells:/fish:/release:/2/CentOS_7/repodata/repomd.xml.key",
+          :gpgkey   => "https://download.opensuse.org/repositories/shells:/fish:/release:/2/CentOS_7/repodata/repomd.xml.key",
         )
       end
     end
