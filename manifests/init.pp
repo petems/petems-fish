@@ -15,7 +15,7 @@
 # @param manage_package [Boolean] Whether to manage the fish package
 #
 # @param manage_repo [Boolean] Whether to manage the package repositroy
-##
+#
 # @param package_name [String] Name of the fish package
 #
 # @param package_version [String] Version of the fish package to install
@@ -38,7 +38,4 @@ class fish (
   -> class { '::fish::install': }
   -> Class['::fish']
 
-  # Update packages on repo refresh
-  Class['::fish::repo']
-  ~> Class['::fish::install']
 }

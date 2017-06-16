@@ -5,16 +5,15 @@
 #
 class fish::params {
 
-  # OS Specific Defaults
   case $::osfamily {
-    'RedHat': {
-      #
-    }
     'Debian': {
-      $ubuntu_bleeding_edge_repo = undef
+      $package_name = 'fish'
+    }
+    'RedHat': {
+      $package_name = 'fish'
     }
     default: {
-      fail("${::operatingsystem} not supported")
+      fail("${::osfamily} not supported")
     }
   }
 
@@ -22,6 +21,6 @@ class fish::params {
   $manage_package   = true
   $manage_repo      = true
   $manage_service   = true
-  $package_name     = 'fish'
   $package_version  = 'installed'
+
 }
