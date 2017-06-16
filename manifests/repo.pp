@@ -23,8 +23,11 @@ class fish::repo {
           'Ubuntu': {
             require ::fish::repo::ubuntu
           }
+          'Debian': {
+            require ::fish::repo::debian
+          }
           default: {
-            # code
+            fail("Debian-flavour Operating System ${::operatingsystem} not supported")
           }
         }
       }
