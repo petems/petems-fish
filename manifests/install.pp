@@ -4,7 +4,10 @@
 #
 class fish::install {
 
-  package { $::fish::package_name:
-    ensure => $::fish::package_version,
+  if $::fish::manage_package {
+    package { $::fish::package_name:
+      ensure => $::fish::package_version,
+    }
   }
+
 }

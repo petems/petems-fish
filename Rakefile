@@ -25,8 +25,6 @@ exclude_paths = [
   "spec/**/*",
 ]
 
-Rake::Task[:lint].clear
-
 PuppetLint.configuration.relative = true
 PuppetLint.configuration.disable_80chars
 PuppetLint.configuration.disable_class_inherits_from_params_class
@@ -42,6 +40,17 @@ PuppetSyntax.exclude_paths = exclude_paths
 desc "Run acceptance tests"
 RSpec::Core::RakeTask.new(:acceptance) do |t|
   t.pattern = 'spec/acceptance'
+end
+
+begin
+  require 'github_changelog_generator/task'
+  GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+    version = (Blacksmith::Modulefile.new).version
+    config.future_release = "v#{version}"
+    config.header = "# Change log\n\nAll notable changes to this project will be documented in this file."
+    config.exclude_labels = %w{duplicate question invalid wontfix modulesync}
+  end
+rescue LoadError
 end
 
 desc "Run syntax, lint, and spec tests."

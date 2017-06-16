@@ -32,5 +32,6 @@ describe 'fish class' do
     describe package('fish') do
       it { is_expected.to be_installed }
     end
+
   end
 end
