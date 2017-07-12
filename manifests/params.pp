@@ -12,6 +12,9 @@ class fish::params {
     'RedHat': {
       $package_name = 'fish'
     }
+    'Archlinux': {
+      $package_name = 'fish'
+    }
     default: {
       fail("${::osfamily} not supported")
     }
