@@ -19,6 +19,9 @@
   ],
   "operatingsystem_support": [
     {
+      "operatingsystem": "Archlinux"
+    },
+    {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "5",
